@@ -69,7 +69,10 @@ int Detour_LogDirect(void* loggingSystem, int channel, int severity, LeafCodeInf
 		if (RE2::FullMatch(args ? buffer : str, *regex))
 			return 0;
 	}
-
+	
+	if (V_stristr(str, "Connection to Steam servers successful")) {
+		g_pLogDirect(loggingSystem, channel, severity, leafCode, metaData, color, "zdp found my string !!!!\n", args);
+	}
 	return g_pLogDirect(loggingSystem, channel, severity, leafCode, metaData, color, str, args);
 }
 
